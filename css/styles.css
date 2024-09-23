@@ -1,0 +1,21 @@
+#notifications {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.notification-dot {
+    position: absolute;
+    top: -27px;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgb(20, 255, 20);
+    display: none;
+}
+
+#notifications.has-notifications .notification-dot {
+     /* Show when there are notifications */
+     display: block;
+}
