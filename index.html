@@ -7,41 +7,77 @@
     <title>WebApp Dashboard</title>
 </head>
 <body>
-    <header>
-        <h1>WebApp<sup>TM</sup></h1>
-        <div>
-            <img src="svgs/bell.svg" alt="Bell" height="25px" width="20px">
-            <div id="notifications">
-                <span class="notification-dot"></span>
+    <div class="container">
+        <header>
+            <h1>WebApp™</h1>
+            <div>
+                <img src="svgs/bell.svg" alt="Bell" height="25px" width="20px">
+                <div id="notifications">
+                    <span class="notification-dot"></span>
+                </div>
             </div>
-        </div>
-        <img src="images/member-1.jpg" alt="Member" height="35px" width="35px">
-        <h3>Student Name</h3>
-    </header>
-    <nav>
-        <ul>
-            <li>
-                <a href="index.html">
-                    <img src="svgs/home.svg" alt="Home" height="35px" width="35px">
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="svgs/bar-chart.svg" alt="Chart" height="35px" width="35px">
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="svgs/members.svg" alt="Members" height="35px" width="35px">
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="svgs/settings.svg" alt="Settings" height="35px" width="35px">
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <main></main>
+            <img src="images/member-1.jpg" alt="Member" height="35px" width="35px">
+            <h3>Student Name</h3>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="svgs/home.svg" alt="Home" height="35px" width="35px">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="svgs/bar-chart.svg" alt="Chart" height="35px" width="35px">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="svgs/members.svg" alt="Members" height="35px" width="35px">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="svgs/settings.svg" alt="Settings" height="35px" width="35px">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <h2 class="headline">Dashboard</h2>
+            <div class="alert" id="alert">
+                <p>Alert: You have unread messages</p>
+            </div>
+            <section class="traffic">
+                <div class="traffic-header">
+                    <h3>Traffic</h3>
+                    <ul class="traffic-nav">
+                        <li class="traffic-nav-link">Hourly</li>
+                        <li class="traffic-nav-link">Daily</li>
+                        <li class="traffic-nav-link active">Weekly</li>
+                        <li class="traffic-nav-link">Monthly</li>
+                    </ul>
+                </div>
+                <div class="widget-container-full">
+                    <!-- element line graph will attach to -->
+                    <canvas id="traffic-chart"></canvas>
+                </div>
+            </section>
+            <section class="daily">
+                <h3>Daily Traffic</h3>
+                <div class="widget-container-half">
+                    <!-- element bar graph will attach to -->
+                    <canvas id="daily-chart"></canvas>
+                </div>
+            </section>
+            <section class="">
+                <h3>Mobile Users</h3>
+                <div class="widget-container-half">
+                    <!-- element bar graph will attach to -->
+                    <canvas id="mobile-users"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
