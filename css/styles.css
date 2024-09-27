@@ -6,8 +6,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #f0f0f0;
+    color: #333;
 }
+
+/* Container grid layout */
 
 .container {
     display: grid;
@@ -20,6 +23,8 @@ body {
     height: 100vh;
 }
 
+/* Header styling */
+
 header {
     grid-area: header;
     display: flex;
@@ -31,16 +36,29 @@ header {
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 1.3em;
+    font-weight: 400;
 }
 
 
+/* Profile and notification icons */
+
+header img {
+    border-radius: 50%;
+}
+
+header h3 {
+    font-size: 1em;
+    font-weight: 400;
+}
 
 #notifications {
     position: relative;
     display: inline-block;
     vertical-align: middle;
 }
+
+/* Notification dot */
 
 .notification-dot {
     position: absolute;
@@ -58,6 +76,8 @@ header h1 {
      display: block;
 }
 
+/* Navigation styling */
+
 nav {
     grid-area: nav;
     background-color: #5a4da8;
@@ -71,7 +91,68 @@ nav ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 80%;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a img {
+    filter: invert(100%);
+}
+
+/* Main content styling */
+
+main {
+    grid-area: main;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+/* Styling for Main Header Container */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd; /* Adding the tab bottom border */
+    margin-bottom: 1rem;
+    background-color: #f7f7f7;
+}
+
+/* Styling for Dashboard Headline */
+.headline {
+    font-size: 15px;
+    font-weight: 600;
+    color: #4b49ac;
+    margin: 0;
+    padding: 1rem;
+    border-bottom: white;
+    background-color: white;
+    position: relative;
+}
+
+.headline::after {
+    content: "";
+    display: block;
+    width: 110px; 
+    height: 2px;
+    background-color: #fff; 
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+.headline::before {
+    content: "";
+    display: block;
+    width: 2px; 
+    height: 49px;
+    background-color: #ddd;
+    position: absolute;
+    left: 110px;
+    top: 0;
 }
 
 .social-image {
