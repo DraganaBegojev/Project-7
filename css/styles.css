@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
     background-color: #f0f0f0;
     color: #333;
 }
@@ -21,6 +21,7 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     height: 100vh;
+    background-color: #fff;
 }
 
 /* Header styling */
@@ -31,7 +32,6 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #5a4da8;
-    color: white;
     padding: 10px 15px;
 }
 
@@ -106,7 +106,6 @@ nav ul li a img {
 
 main {
     grid-area: main;
-    background-color: #fff;
     overflow-y: auto;
 }
 
@@ -116,46 +115,146 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #ddd; /* Adding the tab bottom border */
     margin-bottom: 1rem;
     background-color: #f7f7f7;
+    height: 50px;
 }
 
 /* Styling for Dashboard Headline */
 .headline {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
-    color: #4b49ac;
+    color: #151530; 
     margin: 0;
-    padding: 1rem;
-    border-bottom: white;
     background-color: white;
-    position: relative;
+    padding: 20px;
 }
 
-.headline::after {
-    content: "";
-    display: block;
-    width: 110px; 
-    height: 2px;
-    background-color: #fff; 
-    position: absolute;
-    bottom: -2px;
-    left: 0;
+/* Styling for the Tab Section (empty) */
+
+.tab {
+    flex-grow: 1;
+    height: inherit;
+    border-bottom: 2px solid #ddd;
+    border-left: 2px solid #ddd;
 }
 
-.headline::before {
-    content: "";
-    display: block;
-    width: 2px; 
-    height: 49px;
-    background-color: #ddd;
-    position: absolute;
-    left: 110px;
-    top: 0;
+/* Styling for Alert Box */
+
+.alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6b64c9;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin: 20px;
+    font-size: 0.875rem;
 }
 
-.social-image {
-    width: 30px;
-    height: 30px;
+.alert p {
+    margin: 0;
 }
+
+.alert button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* General Section Styling */
+section {
+    padding: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+section h3 {
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Traffic Section */
+
+.traffic-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Space between title and tabs */
+}
+
+.traffic-nav {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    width: 100%;
+    list-style: none;
+}
+
+.traffic-nav-link {
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.traffic-nav-link.active {
+    background-color: #3b9f6bdc;
+    color: white;
+}
+
+/* Widgets for Charts */
+.widget-container-full, .widget-container-half {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Social Stats */
+
+.social-stats {
+    display: grid;
+    gap: 15px;
+}
+
+.social-container {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid #cdcdcd;
+    padding: 15px;
+    border-radius: 7px;
+    background-color: #eaeaea;
+}
+
+.social-image svg {
+    width: 40px;
+    height: 40px;
+}
+
+.social-text {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.social-text h4 {
+    font-size: 15px;
+    color: #6b64c9;
+    font-weight: 400;
+}
+.social-text p {
+    font-size: 30px;
+    color: #535353;
+    font-weight: 400;
+}
+
