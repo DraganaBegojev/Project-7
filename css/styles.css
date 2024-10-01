@@ -42,8 +42,11 @@ header h1 {
 
 
 /* Profile and notification icons */
+.bell {
+    filter: invert(100%);
+}
 
-header img {
+.profile-image {
     border-radius: 50%;
 }
 
