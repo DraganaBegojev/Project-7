@@ -14,13 +14,12 @@ body {
 
 .container {
     display: grid;
-    grid-template-areas: 
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
         "header"
         "nav"
         "main";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    height: 100vh;
     background-color: #fff;
 }
 
@@ -31,8 +30,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #5a4da8;
-    padding: 10px 15px;
+    background-color: #5c51a1bd;
+    color: white;
+    padding: 20px 15px;
 }
 
 header h1 {
@@ -80,7 +80,7 @@ header h3 {
 
 nav {
     grid-area: nav;
-    background-color: #5a4da8;
+    background-color: #4a446ae8;
     display: flex;
     justify-content: space-around;
     align-items: center;
