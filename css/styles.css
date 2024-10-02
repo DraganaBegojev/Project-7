@@ -230,7 +230,7 @@ section h3 {
 
 .social-container {
     display: grid;
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 70px 1fr;
     gap: 10px;
     align-items: center;
     border: 1px solid #cdcdcd;
@@ -239,9 +239,12 @@ section h3 {
     background-color: #eaeaea;
 }
 
-.social-image svg {
-    width: 40px;
-    height: 40px;
+.social-image {
+    width: 60px;
+    height: 60px;
+    background-color: #6b64c9;
+    border: 15px solid #6b64c9;
+    border-radius: 50%;
 }
 
 .social-text {
@@ -251,13 +254,13 @@ section h3 {
 }
 
 .social-text h4 {
-    font-size: 15px;
+    font-size: 16px;
     color: #6b64c9;
     font-weight: 400;
 }
 .social-text p {
-    font-size: 30px;
+    font-size: 34px;
     color: #535353;
-    font-weight: 400;
+    font-weight: 300;
 }
 
