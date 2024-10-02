@@ -264,3 +264,26 @@ section h3 {
     font-weight: 300;
 }
 
+.members-container {
+    text-align: center;
+    font-size: 14px;
+    padding: 20px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.members-container .profile-image {
+    width: 70px;
+    height: 70px;
+}
+
+.members-text a {
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.members-container:last-child {
+    border: none;
+    padding-bottom: 0;
+}
+
+
