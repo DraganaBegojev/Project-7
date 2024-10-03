@@ -339,12 +339,10 @@ button {
     -moz-appearance: none; 
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="%235a4da8" d="M7 10l5 5 5-5z"/%3E%3C/svg%3E');  
     background-repeat: no-repeat;
-    background-position: right 15px center; 
+    background-position: right 5px center; 
     background-size: 24px 24px;  
 }
-#timezone option {
-    width: 100% !important;
-}
+
 #cancel {
     background-color: #a5a5a5;
 }
