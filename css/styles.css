@@ -36,14 +36,28 @@ header {
 }
 
 header h1 {
-    font-size: 1.3em;
+    font-size: 20px;
     font-weight: 400;
+    margin: 0;
 }
 
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.right div:first-child {
+    border-right: solid 1px #bababa;
+    padding: 4px;
+}
 
 /* Profile and notification icons */
 .bell {
     filter: invert(100%);
+    position: relative;
+    right: 7px;
 }
 
 .profile-image {
@@ -51,7 +65,7 @@ header h1 {
 }
 
 header h3 {
-    font-size: 1em;
+    font-size: 13px;
     font-weight: 400;
 }
 
@@ -174,7 +188,7 @@ main {
 /* General Section Styling */
 section {
     border-bottom: 1px solid #ddd;
-    padding: 10px 20px 0 20px;
+    padding: 20px;
 }
 
 section h3 {
@@ -228,6 +242,7 @@ section h3 {
 .social-stats {
     display: grid;
     gap: 15px;
+    padding-bottom: 20px;
 }
 
 .social-container {
@@ -271,10 +286,12 @@ section h3 {
 .members-container {
     text-align: center;
     font-size: 14px;
-    padding: 10px 0;
+    padding: 20px 0;
     border-bottom: 1px solid #ddd;
 }
-
+.members-container:last-child{
+    padding-bottom: 0;
+}
 .members-container .profile-image {
     width: 70px;
     height: 70px;
@@ -457,6 +474,21 @@ button {
     .mobile {
         grid-column: 2 / span 1;
         }
+    .traffic-header {
+        flex-direction: row;
+    }
+    .traffic-nav {
+        justify-content: end;
+    }
+    .facebook {
+        grid-column: 1 / span 1;
+     }
+     .instagram{
+        grid-column: 2 / span 1;
+     }
+     .twitter {
+        grid-column: 3 / span 1;
+     }
 }
 
 
@@ -469,6 +501,9 @@ button {
         grid-column: 2 / span 1;
         }
      .members-container {
-        height: 150px;
+        height: 160px;
      }
+     .members-container:last-child{
+        height: 140px;
+    }
 }
