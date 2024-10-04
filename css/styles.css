@@ -110,6 +110,8 @@ nav ul li a img {
 main {
     grid-area: main;
     overflow-y: auto;
+    display: grid;
+    grid-template-columns: 100%;
 }
 
 /* Styling for Main Header Container */
@@ -138,8 +140,8 @@ main {
 .tab {
     flex-grow: 1;
     height: inherit;
-    border-bottom: 2px solid #ddd;
-    border-left: 2px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 }
 
 /* Styling for Alert Box */
@@ -171,8 +173,8 @@ main {
 
 /* General Section Styling */
 section {
-    padding: 20px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px 0 20px;
 }
 
 section h3 {
@@ -269,8 +271,8 @@ section h3 {
 .members-container {
     text-align: center;
     font-size: 14px;
-    padding: 20px 0;
-    border-bottom: 2px solid #ddd;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .members-container .profile-image {
@@ -285,7 +287,6 @@ section h3 {
 
 .members-container:last-child {
     border: none;
-    padding-bottom: 0;
 }
 
 /* Message User */
@@ -319,9 +320,10 @@ select {
 
 /* Settings Section */
 
-.settings {
+.settings, .message {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .setting-item {
@@ -423,4 +425,50 @@ button {
 
 .settings-button button {
     flex: 1;
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 65px 1fr;
+        grid-template-areas:
+        "header header"
+        "nav main";
+    }
+    nav {
+        align-items: flex-start;
+    }
+    nav ul {
+        flex-direction: column;
+        width: auto;
+        gap: 20px;
+    }
+
+    main {
+        grid-template-columns: 50% ;
+    }
+    .traffic, .social-stats, .members, .message, .settings, .activity, .main-header, .alert {
+        grid-column: 1 / span 2;
+        }
+    .daily {
+        grid-column: 1 / span 1;
+        border-right:  1px solid #ddd;
+        }
+    .mobile {
+        grid-column: 2 / span 1;
+        }
+}
+
+
+@media (min-width: 1024px) {
+    .members, .message {
+        grid-column: 1 / span 1;
+        border-right:  1px solid #ddd;
+        }
+    .activity, .settings {
+        grid-column: 2 / span 1;
+        }
+     .members-container {
+        height: 150px;
+     }
 }
