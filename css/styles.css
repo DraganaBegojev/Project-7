@@ -306,6 +306,10 @@ section h3 {
     border: none;
 }
 
+.activity .info {
+    display: none;
+}
+
 /* Message User */
 
 form {
@@ -502,6 +506,7 @@ button {
         text-align: right;
     }
     .activity .info {
+        display: block;
         font-size: 30px;
         font-weight: 300;
         color: #5a4da8;
