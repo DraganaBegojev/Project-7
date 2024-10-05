@@ -160,7 +160,7 @@ main {
 
 /* Styling for Alert Box */
 
-.alert {
+.alert li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -170,10 +170,7 @@ main {
     border-radius: 4px;
     margin: 20px;
     font-size: 0.875rem;
-}
-
-.alert p {
-    margin: 0;
+    opacity: 0.7;
 }
 
 .alert button {
