@@ -489,6 +489,25 @@ button {
      .twitter {
         grid-column: 3 / span 1;
      }
+     .members-container {
+        display: grid;
+        grid-template-columns: 70px 1fr 70px;
+        gap: 20px;
+        align-items: center;
+    }
+    .members-text {
+        text-align: left;
+    }
+    .info {
+        text-align: right;
+    }
+    .activity .info {
+        font-size: 30px;
+        font-weight: 300;
+        color: #5a4da8;
+        opacity: 0.7;
+    }
+
 }
 
 
