@@ -1,14 +1,30 @@
-const alertBanner = document.getElementById('alert');
-alertBanner.innerHTML = `
+//alert
+
+const alertMessages = document.getElementById('alert1');
+const alertUsers = document.getElementById('alert2');
+
+alertMessages.innerHTML = `
     <div class="alert-banner">
         <div class="new_message">Alert: 3 new messages</div>
         <div class="close">x</div>
     </div>`;
+alertUsers.innerHTML = `
+    <div class="alert-banner">
+        <div class="new_message">Alert: 1 new user</div>
+        <div class="close">x</div>
+    </div>`;
    
-alertBanner.addEventListener('click', e => {
+alertMessages.addEventListener('click', e => {
     const element = e.target;
     if (element.classList.contains("close")) {
-    alertBanner.style.display = "none"
+    alertMessages.style.display = "none"
+    }
+});
+
+alertUsers.addEventListener('click', e => {
+    const element = e.target;
+    if (element.classList.contains("close")) {
+    alertUsers.style.display = "none"
     }
 });
 
@@ -121,4 +137,22 @@ let mobileChart = new Chart(mobileCanvas, {
     type: 'doughnut',
     data: mobileData,
     options: mobileOptions
+});
+
+// message
+
+const user = document.getElementById("userField");
+const message = document.getElementById("messageField");
+const send = document.getElementById("send");
+
+send.addEventListener('click', () => {
+    if (user.value === "" && message.value === "") {
+        alert("Please fill out user and message fields before sending");
+    } else if (user.value === "" ) {
+        alert("Please fill out user field before sending");
+    } else if (message.value === "" ) {
+        alert("Please fill out message field before sending");
+    } else {
+        alert(`Message successfully sent to: ${user.value}`);
+    }
 });
