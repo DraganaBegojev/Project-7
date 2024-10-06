@@ -212,6 +212,7 @@ section h3 {
     list-style: none;
 }
 
+
 .traffic-nav-link {
     padding: 5px 10px;
     border-radius: 15px;
@@ -228,11 +229,11 @@ section h3 {
 
 /* Widgets for Charts */
 .widget-container-full, .widget-container-half {
-    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    flex-direction: column;
 }
 
 /* Social Stats */
@@ -397,7 +398,7 @@ select {
 }
 
 input:checked + .slider {
-    background-color: #5a4da8; /* Purple color for ON state */
+    background-color: #5a4da8; 
     opacity: 0.8;
 }
 
