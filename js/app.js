@@ -37,19 +37,53 @@ alertUsers.addEventListener('click', e => {
 
 
 
-// traffic
+// traffic - hourly
 
 const trafficCanvas = document.getElementById("traffic-chart");
 
-let trafficData = {
-    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
-    "4-10", "11-17", "18-24", "25-31"],
+const hourlyTrafic = {
+    labels: ["12am", "3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"],
     datasets: [{
-        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
-    backgroundColor: 'rgba(116, 119, 191, .3)',
-    borderWidth: 1,
+      label: 'Traffic',
+      data: [30, 50, 40, 60, 80, 75, 90, 60],
+      backgroundColor: 'rgba(116, 119, 191, 0.3)',
+      borderColor: 'rgba(116, 119, 191, 1)',
+      borderWidth: 1
     }]
-};
+  };
+  
+  const dailyTrafic = {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    datasets: [{
+      label: 'Traffic',
+      data: [75, 100, 150, 125, 225, 200, 100],
+      backgroundColor: 'rgba(116, 119, 191, 0.3)',
+      borderColor: 'rgba(116, 119, 191, 1)',
+      borderWidth: 1
+    }]
+  };
+  
+  const weeklyTrafic = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+      label: 'Traffic',
+      data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+      backgroundColor: 'rgba(116, 119, 191, 0.3)',
+      borderColor: 'rgba(116, 119, 191, 1)',
+      borderWidth: 1
+    }]
+  };
+  
+  const monthlyTrafic = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: 'Traffic',
+      data: [2000, 2400, 1800, 2200, 2800, 3200, 3000, 2600, 2400, 2800, 2900, 3000],
+      backgroundColor: 'rgba(116, 119, 191, 0.3)',
+      borderColor: 'rgba(116, 119, 191, 1)',
+      borderWidth: 1
+    }]
+  };
 
 let trafficOptions = {
     backgroundColor: 'rgba(112, 104, 201, .5)',
@@ -73,9 +107,51 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
-    data: trafficData,
+    data: hourlyTrafic,
     options: trafficOptions
 });
+
+function updateChart(newData) {
+    trafficChart.data = newData;  // Update the chart's data
+    trafficChart.update();        // Re-render the chart
+  }
+
+const tabs = document.querySelectorAll('.traffic-nav-link');
+
+function activateTab(e) {
+    tabs.forEach(tab => tab.classList.remove('active'));
+    e.target.classList.add('active');
+}
+
+// traffic - hourly
+
+  document.getElementById('t-h').addEventListener('click', (e) => {
+    updateChart(hourlyTrafic);
+    activateTab(e);
+});
+
+
+// traffic - daily
+
+document.getElementById('t-d').addEventListener('click', (e) => {
+    updateChart(dailyTrafic);
+    activateTab(e);
+});
+
+// trafic - weekly
+
+document.getElementById('t-w').addEventListener('click', (e) => {
+    updateChart(weeklyTrafic);
+    activateTab(e);
+});
+
+//trafic - monthly
+
+document.getElementById('t-m').addEventListener('click', (e) => {
+    updateChart(monthlyTrafic);
+    activateTab(e);
+});
+
 
 
 //  daily traffic
