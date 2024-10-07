@@ -2,6 +2,7 @@
 
 const alertMessages = document.getElementById('alert1');
 const alertUsers = document.getElementById('alert2');
+const bellIcon = document.getElementById('notify');
 
 alertMessages.innerHTML = `
     <div class="alert-banner">
@@ -13,20 +14,28 @@ alertUsers.innerHTML = `
         <div class="new_message">Alert: 1 new user</div>
         <div class="close">x</div>
     </div>`;
-   
+
+// Function to toggle visibility of alerts
+bellIcon.addEventListener('click', () => {
+    const isAlertVisible = alertMessages.style.display === "block" || alertUsers.style.display === "block";
+    alertMessages.style.display = isAlertVisible ? "none" : "block";
+    alertUsers.style.display = isAlertVisible ? "none" : "block";
+});
+
+// Close individual alerts on clicking 'x'
 alertMessages.addEventListener('click', e => {
-    const element = e.target;
-    if (element.classList.contains("close")) {
-    alertMessages.style.display = "none"
+    if (e.target.classList.contains("close")) {
+        alertMessages.style.display = "none";
     }
 });
 
 alertUsers.addEventListener('click', e => {
-    const element = e.target;
-    if (element.classList.contains("close")) {
-    alertUsers.style.display = "none"
+    if (e.target.classList.contains("close")) {
+        alertUsers.style.display = "none";
     }
 });
+
+
 
 // traffic
 
@@ -156,3 +165,5 @@ send.addEventListener('click', () => {
         alert(`Message successfully sent to: ${user.value}`);
     }
 });
+
+
