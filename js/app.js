@@ -4,6 +4,7 @@ const alertMessages = document.getElementById('alert1');
 const alertUsers = document.getElementById('alert2');
 const bellIcon = document.getElementById('notify');
 
+// alerts content
 alertMessages.innerHTML = `
     <div class="alert-banner">
         <div class="new_message">Alert: 3 new messages</div>
@@ -15,25 +16,25 @@ alertUsers.innerHTML = `
         <div class="close">x</div>
     </div>`;
 
-// Function to toggle visibility of alerts
+
+let isAlertVisible = false;
+
 bellIcon.addEventListener('click', () => {
-    const isAlertVisible = alertMessages.style.display === "block" || alertUsers.style.display === "block";
-    alertMessages.style.display = isAlertVisible ? "none" : "block";
-    alertUsers.style.display = isAlertVisible ? "none" : "block";
+    isAlertVisible = !isAlertVisible;
+    alertMessages.style.display = isAlertVisible ? "block" : "none";
+    alertUsers.style.display = isAlertVisible ? "block" : "none";
 });
 
 // Close individual alerts on clicking 'x'
-alertMessages.addEventListener('click', e => {
-    if (e.target.classList.contains("close")) {
-        alertMessages.style.display = "none";
-    }
-});
-
-alertUsers.addEventListener('click', e => {
-    if (e.target.classList.contains("close")) {
-        alertUsers.style.display = "none";
-    }
-});
+const closeAlert = alert => {
+    alert.addEventListener('click', e => {
+        if (e.target.classList.contains("close")) {
+            alert.style.display = "none";
+        }
+    });
+};
+closeAlert(alertMessages);
+closeAlert(alertUsers);
 
 
 
@@ -41,49 +42,48 @@ alertUsers.addEventListener('click', e => {
 
 const trafficCanvas = document.getElementById("traffic-chart");
 
-const hourlyTrafic = {
-    labels: ["12am", "3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"],
-    datasets: [{
-      label: 'Traffic',
-      data: [30, 50, 40, 60, 80, 75, 90, 60],
-      backgroundColor: 'rgba(116, 119, 191, 0.3)',
-      borderColor: 'rgba(116, 119, 191, 1)',
-      borderWidth: 1
-    }]
-  };
-  
-  const dailyTrafic = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [{
-      label: 'Traffic',
-      data: [75, 100, 150, 125, 225, 200, 100],
-      backgroundColor: 'rgba(116, 119, 191, 0.3)',
-      borderColor: 'rgba(116, 119, 191, 1)',
-      borderWidth: 1
-    }]
-  };
-  
-  const weeklyTrafic = {
-    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
-    datasets: [{
-      label: 'Traffic',
-      data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
-      backgroundColor: 'rgba(116, 119, 191, 0.3)',
-      borderColor: 'rgba(116, 119, 191, 1)',
-      borderWidth: 1
-    }]
-  };
-  
-  const monthlyTrafic = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [{
-      label: 'Traffic',
-      data: [2000, 2400, 1800, 2200, 2800, 3200, 3000, 2600, 2400, 2800, 2900, 3000],
-      backgroundColor: 'rgba(116, 119, 191, 0.3)',
-      borderColor: 'rgba(116, 119, 191, 1)',
-      borderWidth: 1
-    }]
-  };
+const trafficData = {
+    hourly: {
+        labels: ["12am", "3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"],
+        datasets: [{
+        label: 'Traffic',
+        data: [30, 50, 40, 60, 80, 75, 90, 60],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        borderColor: 'rgba(116, 119, 191, 1)',
+        borderWidth: 1
+        }]
+    },
+    daily: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [{
+        label: 'Traffic',
+        data: [75, 100, 150, 125, 225, 200, 100],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        borderColor: 'rgba(116, 119, 191, 1)',
+        borderWidth: 1
+        }]
+    },
+     weekly: {
+        labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
+        datasets: [{
+        label: 'Traffic',
+        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        borderColor: 'rgba(116, 119, 191, 1)',
+        borderWidth: 1
+        }]
+    },
+    monthly: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+        label: 'Traffic',
+        data: [2000, 2400, 1800, 2200, 2800, 3200, 3000, 2600, 2400, 2800, 2900, 3000],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        borderColor: 'rgba(116, 119, 191, 1)',
+        borderWidth: 1
+        }]
+    }
+};
 
 let trafficOptions = {
     backgroundColor: 'rgba(112, 104, 201, .5)',
@@ -107,7 +107,7 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
-    data: hourlyTrafic,
+    data: trafficData.hourly,
     options: trafficOptions
 });
 
@@ -118,40 +118,14 @@ function updateChart(newData) {
 
 const tabs = document.querySelectorAll('.traffic-nav-link');
 
-function activateTab(e) {
-    tabs.forEach(tab => tab.classList.remove('active'));
-    e.target.classList.add('active');
-}
-
-// traffic - hourly
-
-  document.getElementById('t-h').addEventListener('click', (e) => {
-    updateChart(hourlyTrafic);
-    activateTab(e);
+tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+        const dataType = e.target.dataset.type;  // assumes data-type attribute on each tab
+        updateChart(trafficData[dataType]);
+        tabs.forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+    });
 });
-
-
-// traffic - daily
-
-document.getElementById('t-d').addEventListener('click', (e) => {
-    updateChart(dailyTrafic);
-    activateTab(e);
-});
-
-// trafic - weekly
-
-document.getElementById('t-w').addEventListener('click', (e) => {
-    updateChart(weeklyTrafic);
-    activateTab(e);
-});
-
-//trafic - monthly
-
-document.getElementById('t-m').addEventListener('click', (e) => {
-    updateChart(monthlyTrafic);
-    activateTab(e);
-});
-
 
 
 //  daily traffic
