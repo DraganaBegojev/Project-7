@@ -120,7 +120,7 @@ const tabs = document.querySelectorAll('.traffic-nav-link');
 
 tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
-        const dataType = e.target.dataset.type;  // assumes data-type attribute on each tab
+        const dataType = e.target.dataset.type; 
         updateChart(trafficData[dataType]);
         tabs.forEach(t => t.classList.remove('active'));
         e.target.classList.add('active');
@@ -204,16 +204,70 @@ const user = document.getElementById("userField");
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
 
-send.addEventListener('click', () => {
+send.addEventListener('click', (e) => {
     if (user.value === "" && message.value === "") {
         alert("Please fill out user and message fields before sending");
+        e.preventDefault();
     } else if (user.value === "" ) {
         alert("Please fill out user field before sending");
+        e.preventDefault();
     } else if (message.value === "" ) {
         alert("Please fill out message field before sending");
+        e.preventDefault();
     } else {
         alert(`Message successfully sent to: ${user.value}`);
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const subscribeToggle = document.getElementById('subscribe');
+    const publicToggle = document.getElementById('public');
+    const timezoneSelect = document.getElementById('timezone');
+    const saveButton = document.getElementById('save');
+    const cancelButton = document.getElementById("cancel");
+
+    // Load settings from localStorage on page load
+    function loadSettings() {
+        const savedSubscribe = localStorage.getItem('subscribe');
+        const savedPublic = localStorage.getItem('public');
+        const savedTimezone = localStorage.getItem('timezone');
+
+        subscribeToggle.checked = savedSubscribe !== null ? savedSubscribe === "true" : true; // default to checked
+        publicToggle.checked = savedPublic !== null ? savedPublic === "true" : true; // default to checked
+        timezoneSelect.value = savedTimezone || ""; // default to "Select a Timezone"
+}
+
+    // Save settings to localstorage
+
+    function saveSettings() {
+        localStorage.setItem('subscribe', subscribeToggle.checked);
+        localStorage.setItem('public', publicToggle.checked);
+        localStorage.setItem('timezone', timezoneSelect.value);
+        alert('Settings saved!');
+    }
+
+    // Reset settings to default and clear localstorage
+
+    function resetSettings() {
+        localStorage.removeItem('subscribe');
+        localStorage.removeItem("public");
+        localStorage.removeItem("timezone");
+
+        subscribeToggle.checked = true; // default to checked
+        publicToggle.checked = true; // default to checked
+        timezoneSelect.selectedIndex = 0; // reset to "Select a Timezone"
+    }
+
+    // Event listeners for Save and Cancel buttons
+    saveButton.addEventListener('click', saveSettings);
+    cancelButton.addEventListener('click', resetSettings);
+
+
+    // Initialize settings on load
+    loadSettings();
+
+});
+
 
 
