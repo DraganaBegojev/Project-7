@@ -89,6 +89,23 @@ header h3 {
     background-color: rgb(5, 182, 5);
 }
 
+#notify {
+    transition: transform 0.2s ease; /* Smooth transition */
+}
+
+#notify:hover .bell {
+    animation: bounce 0.5s; /* Start bounce animation */
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0); /* Start at original position */
+    }
+    50% {
+        transform: translateY(-5px); /* Move up by 5px */
+    }
+}
+
 
 /* Navigation styling */
 
@@ -157,7 +174,7 @@ main {
 
 /* Styling for Alert Box */
 
-.alert-banner {
+.alert {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -165,32 +182,25 @@ main {
     color: white;
     padding: 0.75rem 1rem;
     border-radius: 4px;
-    margin: 10px;
+    margin: 10px 20px;
     font-size: 0.875rem;
     opacity: 0.8;
+    transition: opacity 0.5s ease;
 }
 
-.alert button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-left: 1rem;
-}
 
 #drawer {
-    display: none;
     position: absolute;
-    background: #ffffffe0;
-    right: 0;
+    background: #fff;
+    right: 155px;
+    top: 79px;
     padding: 0 10px;
     width: 190px;
     border: solid 1px #6b64c9;
+    z-index: 2;
 }
 
 .notification {
-    display: flex;
     justify-content: space-between;
     padding: 10px;
 }

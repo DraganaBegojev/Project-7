@@ -1,10 +1,30 @@
+// Alert
+
+const alert = document.getElementById('alert');
+
+alert.innerHTML = `
+        <div class="new_message">Alert: Update available! </div>
+        <div class="close">x</div>
+        `;
+
+
+alert.addEventListener('click', e => {
+    const element = e.target;
+    if (element.classList.contains("close")) {
+        alert.style.opacity = "0";
+        setTimeout(() => alert.style.display = "none", 500); // delay for fade-out effect
+    }
+});
+
+
+// Drawer
 const drawerMessages = document.getElementById('notification-1');
 const drawerUsers = document.getElementById('notification-2');
 const bellIcon = document.getElementById('notify');
 const drawer = document.getElementById('drawer');
 
 
-// Content for notifications without the unnecessary wrapper
+// Content for notifications
 drawerMessages.innerHTML = `
     <div class="new_message">3 new messages</div>
     <div class="close">x</div>`;
@@ -36,6 +56,7 @@ function closeNotification(notification) {
         }
     });
 }
+
 
 // Update borders for notifications
 function updateBorders() {
