@@ -1,41 +1,81 @@
-//alert
-
-const alertMessages = document.getElementById('alert1');
-const alertUsers = document.getElementById('alert2');
+const drawerMessages = document.getElementById('notification-1');
+const drawerUsers = document.getElementById('notification-2');
 const bellIcon = document.getElementById('notify');
-
-// alerts content
-alertMessages.innerHTML = `
-    <div class="alert-banner">
-        <div class="new_message">Alert: 3 new messages</div>
-        <div class="close">x</div>
-    </div>`;
-alertUsers.innerHTML = `
-    <div class="alert-banner">
-        <div class="new_message">Alert: 1 new user</div>
-        <div class="close">x</div>
-    </div>`;
+const drawer = document.getElementById('drawer');
 
 
-let isAlertVisible = false;
+// Content for notifications without the unnecessary wrapper
+drawerMessages.innerHTML = `
+    <div class="new_message">3 new messages</div>
+    <div class="close">x</div>`;
+drawerUsers.innerHTML = `
+    <div class="new_message">1 new user</div>
+    <div class="close">x</div>`;
 
+// Toggle drawer visibility on bell icon click
 bellIcon.addEventListener('click', () => {
-    isAlertVisible = !isAlertVisible;
-    alertMessages.style.display = isAlertVisible ? "block" : "none";
-    alertUsers.style.display = isAlertVisible ? "block" : "none";
+    if (drawer.style.display === "none") {
+        // Show drawer and reset notifications
+        drawer.style.display = "block";
+        drawerMessages.style.display = "flex";
+        drawerUsers.style.display = "flex";
+        updateBorders(); // Call to update borders when drawer is shown
+    } else {
+        // Hide drawer
+        drawer.style.display = "none";
+    }
 });
 
-// Close individual alerts on clicking 'x'
-const closeAlert = alert => {
-    alert.addEventListener('click', e => {
+// Close individual notifications and check if all are closed
+function closeNotification(notification) {
+    notification.addEventListener('click', (e) => {
         if (e.target.classList.contains("close")) {
-            alert.style.display = "none";
+            notification.style.display = "none"; // Hide the notification
+            updateBorders(); // Update borders when a notification is closed
+            checkDrawerStatus(); // Check if all notifications are closed
         }
     });
-};
-closeAlert(alertMessages);
-closeAlert(alertUsers);
+}
 
+// Update borders for notifications
+function updateBorders() {
+    const notifications = document.querySelectorAll('.notification'); // Select all notifications
+    let lastVisibleIndex = -1; // Track the last visible notification index
+
+    // Find the last visible notification index
+    notifications.forEach((notification, index) => {
+        if (notification.style.display !== "none") {
+            lastVisibleIndex = index; // Update to the current index if visible
+        }
+    });
+
+    // Set borders for notifications
+    notifications.forEach((notification, index) => {
+        if (index < lastVisibleIndex) {
+            notification.style.borderBottom = '1px solid #6b64c9'; // Add border for visible notifications
+        } else {
+            notification.style.borderBottom = 'none'; // Remove border for the last visible notification
+        }
+    });
+}
+
+// Check if all notifications are hidden
+function checkDrawerStatus() {
+    const allNotificationsClosed = 
+        drawerMessages.style.display === "none" && 
+        drawerUsers.style.display === "none";
+    
+    if (allNotificationsClosed) {
+        drawer.style.display = "none"; // Hide the drawer if all notifications are closed
+    }
+}
+
+// Attach close notification event listeners
+closeNotification(drawerMessages);
+closeNotification(drawerUsers);
+
+// Initial call to set up borders
+updateBorders();
 
 
 // traffic - hourly

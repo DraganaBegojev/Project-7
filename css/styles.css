@@ -179,6 +179,32 @@ main {
     margin-left: 1rem;
 }
 
+#drawer {
+    display: none;
+    position: absolute;
+    background: #ffffffe0;
+    right: 0;
+    padding: 0 10px;
+    width: 190px;
+    border: solid 1px #6b64c9;
+}
+
+.notification {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.close {
+    margin-left: 1rem;
+    cursor: pointer; 
+}
+
+.notification:not(:last-child) {
+    border-bottom: solid 1px #6b64c9; /* This will now apply correctly */
+}
+
+
 /* General Section Styling */
 section {
     border-bottom: 1px solid #ddd;
