@@ -509,6 +509,9 @@ button {
         color: #5a4da8;
         opacity: 0.7;
     }
+    .setting-item {
+        width: 280px;
+    }
 
 }
 
