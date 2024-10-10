@@ -470,7 +470,8 @@ button {
     text-transform: uppercase;
     font-weight: 300;
     padding: 15px;
-    font-size: 14px;
+    font-size: 12px;
+    opacity: 0.8;
 }
 
 #timezone {
