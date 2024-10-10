@@ -1,18 +1,18 @@
-// Alert
+// Alert Banner
 
-const alert = document.getElementById('alert');
+const alertBanner = document.getElementById('alert');
 
-alert.innerHTML = `
+alertBanner.innerHTML = `
         <div class="new_message">Alert: Update available! </div>
         <div class="close">x</div>
         `;
 
 
-alert.addEventListener('click', e => {
+alertBanner.addEventListener('click', e => {
     const element = e.target;
     if (element.classList.contains("close")) {
-        alert.style.opacity = "0";
-        setTimeout(() => alert.style.display = "none", 500); // delay for fade-out effect
+        alertBanner.style.opacity = "0";
+        setTimeout(() => alertBanner.style.display = "none", 500); // delay for fade-out effect
     }
 });
 
@@ -263,23 +263,24 @@ let mobileChart = new Chart(mobileCanvas, {
 
 const user = document.getElementById("userField");
 const message = document.getElementById("messageField");
-const send = document.getElementById("send");
+const sendMessage = document.getElementById("send");
 
-send.addEventListener('click', (e) => {
+sendMessage.addEventListener('click', (e) => {
     if (user.value === "" && message.value === "") {
         alert("Please fill out user and message fields before sending");
         e.preventDefault();
-    } else if (user.value === "" ) {
+        } else if (user.value === "") {
         alert("Please fill out user field before sending");
         e.preventDefault();
-    } else if (message.value === "" ) {
+        } else if (message.value === "") {
         alert("Please fill out message field before sending");
         e.preventDefault();
-    } else {
+        } else {
         alert(`Message successfully sent to: ${user.value}`);
     }
 });
 
+// Settings
 
 document.addEventListener('DOMContentLoaded', function () {
     const subscribeToggle = document.getElementById('subscribe');
