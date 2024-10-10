@@ -168,7 +168,7 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
-    data: trafficData.hourly,
+    data: trafficData.weekly,
     options: trafficOptions
 });
 
