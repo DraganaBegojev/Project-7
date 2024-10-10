@@ -468,8 +468,9 @@ button {
     color: white;
     cursor: pointer;
     text-transform: uppercase;
-    opacity: 0.8;
+    font-weight: 300;
     padding: 15px;
+    font-size: 14px;
 }
 
 #timezone {
