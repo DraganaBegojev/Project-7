@@ -396,7 +396,7 @@ select {
     position: relative;
     display: inline-block;
     width: 80px;
-    height: 30px;
+    height: 32px;
 
 }
 
@@ -419,8 +419,8 @@ select {
 .slider:before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
+    height: 18px;
+    width: 18px;
     left: 2px;
     bottom: 3px;
     background-color: white;
@@ -435,7 +435,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(50px);
+    transform: translateX(48px);
 }
 
 /* Round sliders */
@@ -447,13 +447,20 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-.toggle-text {
+.toggle-text-on,  .toggle-text-off {
     font-size: 10px;
     color: #fff;
     position: relative;
-    margin-left: 8px;
-    line-height: 30px;
-    opacity: 0.8;
+    line-height: 32px;
+    font-weight: 300;
+}
+
+.toggle-text-on {
+   left: 8px;
+}
+
+.toggle-text-off {
+    left: 35.5px;
 }
 
 button {
